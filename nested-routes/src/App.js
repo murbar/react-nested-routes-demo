@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { BrowserRouter as Router, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 
 const catalog = [
@@ -65,10 +65,12 @@ const MainNav = () => {
   return (
     <ul className="main-nav">
       <li>
-        <Link to="/">Home</Link>
+        <NavLink exact to="/">
+          Home
+        </NavLink>
       </li>
       <li>
-        <Link to="/books">Books</Link>
+        <NavLink to="/books">Books</NavLink>
       </li>
     </ul>
   );
@@ -101,7 +103,7 @@ const Section = ({ match }) => {
       <ul className="books-nav">
         {sect.books.map(b => (
           <li key={b.id}>
-            <Link to={`/books/${sect.slug}/${b.slug}`}>{b.title}</Link>
+            <NavLink to={`/books/${sect.slug}/${b.slug}`}>{b.title}</NavLink>
           </li>
         ))}
       </ul>
@@ -116,7 +118,7 @@ const Books = () => {
       <ul className="sections-nav">
         {catalog.map(({ id, slug, title }) => (
           <li key={id}>
-            <Link to={`/books/${slug}`}>{title}</Link>
+            <NavLink to={`/books/${slug}`}>{title}</NavLink>
           </li>
         ))}
       </ul>
