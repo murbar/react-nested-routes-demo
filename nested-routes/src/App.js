@@ -75,7 +75,12 @@ const MainNav = () => {
 };
 
 const Home = () => {
-  return <h1>Home</h1>;
+  return (
+    <div>
+      <h1>React Nested Routes</h1>
+      <p>A demo by Joel Bartlett.</p>
+    </div>
+  );
 };
 
 const Book = ({ match }) => {
@@ -125,11 +130,11 @@ class App extends Component {
   render() {
     return (
       <Router>
-      <div className="App">
+        <div className="App">
           <MainNav />
           <Route exact path="/" component={Home} />
           <Route path="/books" component={Books} />
-      </div>
+        </div>
       </Router>
     );
   }
