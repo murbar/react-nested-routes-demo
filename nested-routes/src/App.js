@@ -63,7 +63,7 @@ const catalog = [
 
 const MainNav = () => {
   return (
-    <ul>
+    <ul className="main-nav">
       <li>
         <Link to="/">Home</Link>
       </li>
