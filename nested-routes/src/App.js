@@ -77,6 +77,12 @@ const MainNav = () => {
 const Home = () => {
   return <h1>Home</h1>;
 };
+
+const Section = ({ match }) => {
+  const sect = catalog.find(({ slug }) => slug === match.params.sectionId);
+  return <h2>{sect.title}</h2>;
+};
+
 class App extends Component {
   render() {
     return (
