@@ -83,6 +83,21 @@ const Section = ({ match }) => {
   return <h2>{sect.title}</h2>;
 };
 
+const Books = () => {
+  return (
+    <div>
+      <h1>Books</h1>
+      <ul>
+        {catalog.map(s => (
+          <li key={s.id}>
+            <Link to={`/books/${s.slug}`}>{s.title}</Link>
+          </li>
+        ))}
+      </ul>
+      <Route path="/books/:sectionId" component={Section} />
+    </div>
+  );
+};
 class App extends Component {
   render() {
     return (
