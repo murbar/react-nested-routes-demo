@@ -61,6 +61,19 @@ const catalog = [
   }
 ];
 
+const MainNav = () => {
+  return (
+    <ul>
+      <li>
+        <Link to="/">Home</Link>
+      </li>
+      <li>
+        <Link to="/books">Books</Link>
+      </li>
+    </ul>
+  );
+};
+
 const Home = () => {
   return <h1>Home</h1>;
 };
