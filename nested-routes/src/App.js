@@ -60,6 +60,10 @@ const catalog = [
     ]
   }
 ];
+
+const Home = () => {
+  return <h1>Home</h1>;
+};
 class App extends Component {
   render() {
     return (
