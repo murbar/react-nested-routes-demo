@@ -1,4 +1,4 @@
-Deployed at (https://jb-nested-routes.netlify.com/)[https://jb-nested-routes.netlify.com/]
+Deployed at [https://jb-nested-routes.netlify.com/](https://jb-nested-routes.netlify.com/)
 
 # React Router Apple Nav - Stretch Assignment
 
