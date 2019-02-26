@@ -90,8 +90,20 @@ const Book = ({ match }) => {
 };
 
 const Section = ({ match }) => {
-  const sect = catalog.find(({ slug }) => slug === match.params.sectionId);
-  return <h2>{sect.title}</h2>;
+  const sect = catalog.find(({ slug }) => slug === match.params.sectionSlug);
+  return (
+    <div>
+      <h2>{sect.title} Books</h2>
+      <ul className="sections-nav">
+        {sect.books.map(b => (
+          <li key={b.id}>
+            <Link to={`/books/${sect.slug}/${b.slug}`}>{b.title}</Link>
+          </li>
+        ))}
+      </ul>
+      <Route path="/books/:sectionSlug/:bookSlug" component={Book} />
+    </div>
+  );
 };
 
 const Books = () => {
