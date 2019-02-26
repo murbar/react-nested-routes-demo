@@ -78,6 +78,17 @@ const Home = () => {
   return <h1>Home</h1>;
 };
 
+const Book = ({ match }) => {
+  const sect = catalog.find(({ slug }) => slug === match.params.sectionSlug);
+  const book = sect.books.find(({ slug }) => slug === match.params.bookSlug);
+  return (
+    <div className="book-detail">
+      <h3>{book.title}</h3>
+      <p>{book.description}</p>
+    </div>
+  );
+};
+
 const Section = ({ match }) => {
   const sect = catalog.find(({ slug }) => slug === match.params.sectionId);
   return <h2>{sect.title}</h2>;
