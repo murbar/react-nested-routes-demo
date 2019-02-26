@@ -109,18 +109,18 @@ const Section = ({ match }) => {
 const Books = () => {
   return (
     <div>
-      <h1>Books</h1>
-      <ul>
-        {catalog.map(s => (
-          <li key={s.id}>
-            <Link to={`/books/${s.slug}`}>{s.title}</Link>
+      <ul className="books-nav">
+        {catalog.map(({ id, slug, title }) => (
+          <li key={id}>
+            <Link to={`/books/${slug}`}>{title}</Link>
           </li>
         ))}
       </ul>
-      <Route path="/books/:sectionId" component={Section} />
+      <Route path="/books/:sectionSlug" component={Section} />
     </div>
   );
 };
+
 class App extends Component {
   render() {
     return (
