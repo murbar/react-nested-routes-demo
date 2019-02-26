@@ -98,8 +98,7 @@ const Section = ({ match }) => {
   const sect = catalog.find(({ slug }) => slug === match.params.sectionSlug);
   return (
     <div>
-      <h2>{sect.title} Books</h2>
-      <ul className="sections-nav">
+      <ul className="books-nav">
         {sect.books.map(b => (
           <li key={b.id}>
             <Link to={`/books/${sect.slug}/${b.slug}`}>{b.title}</Link>
@@ -114,7 +113,7 @@ const Section = ({ match }) => {
 const Books = () => {
   return (
     <div>
-      <ul className="books-nav">
+      <ul className="sections-nav">
         {catalog.map(({ id, slug, title }) => (
           <li key={id}>
             <Link to={`/books/${slug}`}>{title}</Link>
