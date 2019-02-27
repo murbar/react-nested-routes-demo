@@ -1,4 +1,4 @@
-import React, { Component } from 'react';
+import React, { useState, useEffect } from 'react';
 import { BrowserRouter as Router, Route, NavLink } from 'react-router-dom';
 import './App.css';
 import appData from './data';
@@ -26,7 +26,7 @@ const Home = () => {
   );
 };
 
-const Book = ({ match }) => {
+const Book = ({ match, catalog }) => {
   const sect = catalog.find(({ slug }) => slug === match.params.sectionSlug);
   const book = sect.books.find(({ slug }) => slug === match.params.bookSlug);
   return (
@@ -37,7 +37,7 @@ const Book = ({ match }) => {
   );
 };
 
-const Section = ({ match }) => {
+const Section = ({ match, catalog }) => {
   const sect = catalog.find(({ slug }) => slug === match.params.sectionSlug);
   return (
     <div>
@@ -48,12 +48,23 @@ const Section = ({ match }) => {
           </li>
         ))}
       </ul>
-      <Route path="/books/:sectionSlug/:bookSlug" component={Book} />
+      <Route
+        path="/books/:sectionSlug/:bookSlug"
+        render={props => <Book {...props} catalog={catalog} />}
+      />
     </div>
   );
 };
 
 const Books = () => {
+  const [catalog, setCatalog] = useState([]);
+
+  useEffect(() => {
+    setCatalog(appData);
+  }, []);
+
+  if (!catalog.length) return <div className="loading">Loading data...</div>;
+
   return (
     <div>
       <ul className="sections-nav">
@@ -63,27 +74,28 @@ const Books = () => {
           </li>
         ))}
       </ul>
-      <Route path="/books/:sectionSlug" component={Section} />
+      <Route
+        path="/books/:sectionSlug"
+        render={props => <Section {...props} catalog={catalog} />}
+      />
     </div>
   );
 };
 
-class App extends Component {
-  render() {
-    return (
-      <Router>
-        <div className="App">
-          <MainNav />
-          <Route exact path="/" component={Home} />
-          <Route path="/books" component={Books} />
-          <footer>
-            A demo by Joel Bartlett. See my code on{' '}
-            <a href="https://github.com/murbar/react-nested-routes-demo">GitHub</a>.
-          </footer>
-        </div>
-      </Router>
-    );
-  }
-}
+const App = props => {
+  return (
+    <Router>
+      <div className="App">
+        <MainNav />
+        <Route exact path="/" component={Home} />
+        <Route path="/books" component={Books} />
+        <footer>
+          A demo by Joel Bartlett. See my code on{' '}
+          <a href="https://github.com/murbar/react-nested-routes-demo">GitHub</a>.
+        </footer>
+      </div>
+    </Router>
+  );
+};
 
 export default App;
