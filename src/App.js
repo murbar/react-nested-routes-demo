@@ -95,7 +95,7 @@ const App = props => {
   return (
     <Router>
       <div className="App">
-        <h1>React nested routes demo</h1>
+        <h1>React Routing Demo</h1>
         <MainNav />
         <Route exact path="/" component={Home} />
         <Route path="/books" component={Books} />
