@@ -100,7 +100,7 @@ const App = props => {
         <Route exact path="/" component={Home} />
         <Route path="/books" component={Books} />
         <footer>
-          A demo by Joel Bartlett. See my code on{' '}
+          A demo by Joel Bartlett. See my code on
           <a href="https://github.com/murbar/react-nested-routes-demo">GitHub</a>.
         </footer>
       </div>
