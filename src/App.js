@@ -80,7 +80,6 @@ const Home = () => {
   return (
     <div>
       <h1>React Nested Routes</h1>
-      <p>A demo by Joel Bartlett.</p>
     </div>
   );
 };
@@ -135,6 +134,10 @@ class App extends Component {
           <MainNav />
           <Route exact path="/" component={Home} />
           <Route path="/books" component={Books} />
+          <footer>
+            A demo by Joel Bartlett. See my code on{' '}
+            <a href="https://github.com/murbar/react-nested-routes-demo">GitHub</a>.
+          </footer>
         </div>
       </Router>
     );
